@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es-Mx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/login.css}" />
+    <title>Registrarse</title>
+</head>
+<body>
+    <h1>Registro</h1>
+    <form th:action="@{/inicio}" method="post">
+
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Ingrese su nombre"/>
+        </div>
+
+        <div>
+            <label for="apellidop">Apellido Paterno:</label>
+            <input type="text" id="apellidop" name="apellidoP" required placeholder="Ingrese su apellido paterno"/>
+        </div>
+
+        <div>
+            <label for="apellidom">Apellido Materno:</label>
+            <input type="text" id="apellidom" name="apellidoM" required placeholder="Ingrese su apellido materno"/>
+        </div>
+        
+        <div>
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" name="correo" required placeholder="Ingrese su correo" />
+        </div>
+
+        <div>
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" required placeholder="Ingrese un número celular" pattern="[0-9]{10}" title="Ingrese un número de 10 dígitos" />
+        </div>
+
+        <div>
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena" name="contrasena" required placeholder="Ingrese una contraseña"/>
+        </div>
+
+        <div>
+           .0.0.0.0.0.0.0.
+        </div>
+
+    </form>
+</body>
+</html>
