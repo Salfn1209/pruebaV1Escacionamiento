@@ -15,7 +15,6 @@ import com.PruebaProtocolo.pruebaV1Escacionamiento.services.LoginServices;
 @RequestMapping("/inicio")
 public class LoginControllers {
     
-
     @Autowired
     public LoginServices loginServices;
 
