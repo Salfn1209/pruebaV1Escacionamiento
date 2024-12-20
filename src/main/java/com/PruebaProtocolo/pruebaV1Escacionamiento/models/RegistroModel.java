@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Estacionamiento_Usuario")
+@Table(name = "estacionamiento")
 
 public class RegistroModel {
         

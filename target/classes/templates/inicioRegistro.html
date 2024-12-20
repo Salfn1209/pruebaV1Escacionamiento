@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bienvenido</title>
-  <!--<link rel="stylesheet" th:href="@{/css/index.css}">  Descomentar cuando se vaya a utilizar springboot-->
-  <link rel="stylesheet" href="../static/css/registro.css">
+  <link rel="stylesheet" th:href="@{/css/index.css}">  
+  <!--<link rel="stylesheet" href="../static/css/registro.css">-->
 
 </head>
 <body>
@@ -31,7 +31,7 @@
 <div class="container">
   <div class="container-form">
 
-    <form th:action="@{/inicio}" class="sign-in"  method="POST">
+    <form th:action="@{/login}" class="sign-in"  method="POST">
       <h2>Iniciar Sesión</h2>
 
       <span>Use su correo y contraseña</span>
@@ -40,7 +40,7 @@
       </div>
 
       <div class="container-input">
-        <input type="password" id="contraseña" name="contaseña" placeholder="Password" required>
+        <input type="password" id="password" name="contrasena" placeholder="Password" required>
       </div>
 
       <a href="#">¿Olvidaste tu contraseña?</a>
