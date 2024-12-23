@@ -6,7 +6,7 @@
   <title>Bienvenido</title>
   <link rel="stylesheet" th:href="@{/css/index.css}">  
   <!--<link rel="stylesheet" href="../static/css/registro.css">-->
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <nav id="navbar">
@@ -30,52 +30,43 @@
 
 <div class="container">
   <div class="container-form">
-
-    <form th:action="@{/login}" class="sign-in"  method="POST">
+    <form id="loginEnter" th:action="@{/login}" class="sign-in"  method="POST">
       <h2>Iniciar Sesión</h2>
-
       <span>Use su correo y contraseña</span>
       <div class="container-input">
         <input type="text" id="email" name="email" placeholder="Email" required>
       </div>
-
       <div class="container-input">
         <input type="password" id="password" name="contrasena" placeholder="Password" required>
       </div>
+      
+      <!-- Añadir un id al enlace para el evento -->
+      <a href="#" id="forgotPasswordLink">¿Olvidaste tu contraseña?</a>
 
-      <a href="#">¿Olvidaste tu contraseña?</a>
-      <button class="button">INICIAR SESIÓN</button>
+      <button type="submit" class="button">INICIAR SESIÓN</button>
     </form>
-
   </div>
 
   <div class="container-form">
     <form th:action="@{/inicio}" class="sign-up"  method="POST">
       <h2>Registrarse</h2>
-
       <span>Llene los campos para poder registrarse</span>
-
       <div class="container-input">
         <input type="text" id="nombres" name="nombres" placeholder="Nombres" required>
       </div>
-
       <div class="container-input">
         <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required>
       </div>
-
       <div class="container-input">
         <input type="email" id="correo" name="correo" placeholder="Email" required>
       </div>
-
       <div class="container-input">
         <input type="password" name="contrasena" placeholder="Contraseña" required>
       </div>
-
       <div class="container-input">
         <ion-icon name="call-outline"></ion-icon>
         <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
       </div>
-
       <button type="submit" class="button">REGISTRARSE</button>
     </form>
   </div>
@@ -95,5 +86,43 @@
 </div>
 
 <script th:src="@{/js/index.js}"></script>
+<script>
+  document.getElementById('forgotPasswordLink').addEventListener('click', function(e) {
+    e.preventDefault(); // Evitar que se siga el enlace
+    Swal.fire({
+        title: 'Recuperar Contraseña',
+        text: 'Por favor, ingrese su correo electrónico para recuperar su contraseña.',
+        input: 'email',
+        inputLabel: 'Correo electrónico',
+        inputPlaceholder: 'Correo electrónico',
+        showCancelButton: true,
+        confirmButtonText: 'Enviar',
+        cancelButtonText: 'Cancelar',
+        icon: 'info',
+        inputValidator: (value) => {
+            if (!value) {
+                return '¡Por favor ingrese un correo electrónico!';
+            }
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const email = result.value;
+
+            // Hacer una solicitud al servidor para enviar el correo de recuperación
+            fetch('/recover-password?email=' + email, {
+                method: 'POST'
+            }).then(response => {
+                return response.text();
+            }).then(data => {
+                Swal.fire('¡Correo enviado!', data, 'success');
+            }).catch(error => {
+                Swal.fire('Error', 'Hubo un problema al enviar el correo.', 'error');
+            });
+        }
+    });
+});
+
+  </script>
+  
 </body>
 </html>
