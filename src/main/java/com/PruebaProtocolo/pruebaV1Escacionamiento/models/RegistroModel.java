@@ -26,9 +26,13 @@ public class RegistroModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String fecha;
-    private String modeloAuto;
-    private String colorAuto;
-    private String matricula;
-    private String lugarEstacacionamiento;
+    private String marca_vehiculo;
+    private String modelo_vehiculo;
+    private String anio_vehiculo;
+    private String matricula_vehiculo;
+    private String fecha_entrada;
+    private String fecha_salida;
+    private String zona;
+    private String lugar_reservado;
+    
 }
