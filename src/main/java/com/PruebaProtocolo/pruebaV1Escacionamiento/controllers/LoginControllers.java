@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.PruebaProtocolo.pruebaV1Escacionamiento.models.LoginModel;
+import com.PruebaProtocolo.pruebaV1Escacionamiento.repository.LoginRepository;
 import com.PruebaProtocolo.pruebaV1Escacionamiento.services.EmailService;
 import com.PruebaProtocolo.pruebaV1Escacionamiento.services.LoginServices;
 
@@ -46,6 +47,8 @@ public class LoginControllers {
         }
     }
 
+    
+
      @Autowired
     private EmailService emailService;
 
@@ -61,4 +64,14 @@ public class LoginControllers {
         // Retornar una respuesta al frontend
         return ResponseEntity.ok().build();
     }
+
+    @Autowired
+private LoginRepository loginRepository;  // Asegúrate de tener esta línea en tu controlador
+@GetMapping("/verificarCorreo")
+public ResponseEntity<Boolean> verificarCorreo(@RequestParam String correo) {
+    boolean correoExiste = loginRepository.existsByCorreo(correo);
+    return ResponseEntity.ok(correoExiste);
+}
+
+
 }

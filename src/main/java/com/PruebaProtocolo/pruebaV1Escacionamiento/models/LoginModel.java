@@ -1,5 +1,6 @@
 package com.PruebaProtocolo.pruebaV1Escacionamiento.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,7 +29,13 @@ public class LoginModel {
 
     private String nombres;
     private String apellidos;
+
+    @Column(unique = true) // Asegura que el correo electrónico sea único en la base de datos
     private String correo;
+
     private String telefono;
     private String contrasena;
+
+    
 }
+

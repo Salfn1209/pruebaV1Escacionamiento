@@ -61,7 +61,7 @@
         <input type="email" id="correo" name="correo" placeholder="Email" required>
       </div>
       <div class="container-input">
-        <input type="password" name="contrasena" placeholder="Contraseña" required>
+        <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required>
       </div>
       <div class="container-input">
         <ion-icon name="call-outline"></ion-icon>
@@ -86,43 +86,7 @@
 </div>
 
 <script th:src="@{/js/index.js}"></script>
-<script>
-  document.getElementById('forgotPasswordLink').addEventListener('click', function(e) {
-    e.preventDefault(); // Evitar que se siga el enlace
-    Swal.fire({
-        title: 'Recuperar Contraseña',
-        text: 'Por favor, ingrese su correo electrónico para recuperar su contraseña.',
-        input: 'email',
-        inputLabel: 'Correo electrónico',
-        inputPlaceholder: 'Correo electrónico',
-        showCancelButton: true,
-        confirmButtonText: 'Enviar',
-        cancelButtonText: 'Cancelar',
-        icon: 'info',
-        inputValidator: (value) => {
-            if (!value) {
-                return '¡Por favor ingrese un correo electrónico!';
-            }
-        }
-    }).then((result) => {
-        if (result.isConfirmed) {
-            const email = result.value;
-
-            // Hacer una solicitud al servidor para enviar el correo de recuperación
-            fetch('/recover-password?email=' + email, {
-                method: 'POST'
-            }).then(response => {
-                return response.text();
-            }).then(data => {
-                Swal.fire('¡Correo enviado!', data, 'success');
-            }).catch(error => {
-                Swal.fire('Error', 'Hubo un problema al enviar el correo.', 'error');
-            });
-        }
-    });
-});
-
-  </script>
-  
+<script th:src="@{/js/inicioRegistro.js}"></script>
+<script th:src="@{/js/Registro.js}"></script>
 </body>
 </html>

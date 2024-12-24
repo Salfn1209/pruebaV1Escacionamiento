@@ -1,31 +1,40 @@
 package com.PruebaProtocolo.pruebaV1Escacionamiento.services;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import com.PruebaProtocolo.pruebaV1Escacionamiento.models.LoginModel;
 import com.PruebaProtocolo.pruebaV1Escacionamiento.repository.LoginRepository;
 
 @Service
 public class LoginServices {
-    
+
     @Autowired
-    public LoginRepository loginRepository;
+    private LoginRepository loginRepository;
 
     public void guardarUsuario(LoginModel model) {
-        System.out.println("Guardando usuario: " + model);
-        loginRepository.save(model);
-    }
-    
-    public boolean iniciarSesion(String email, String password) {
-        // Buscar el usuario en la base de datos por su nombre de usuario o correo electrónico
-        LoginModel correo = loginRepository.findByCorreo(email);  // Cambié findByUsername a findByCorreo, asumiendo que buscas por correo
-        
-        // Verificar si el usuario existe
-        if (correo != null) { // Verificar que el usuario no sea null
-            return password.equals(correo.getContrasena()); // Comparar la contraseña proporcionada con la almacenada
+        try {
+            // Intentamos guardar el usuario
+            System.out.println("Guardando usuario: " + model);
+            loginRepository.save(model);
+        } catch (DataIntegrityViolationException e) {
+            // Capturamos el error si el correo ya existe
+            System.out.println("Error: Ya existe un usuario con ese correo electrónico.");
+            // Puedes lanzar una excepción personalizada o manejar el error de otra manera
         }
-        
-        // Si no se encuentra el usuario o las contraseñas no coinciden, el inicio de sesión falla
+    }
+
+    public boolean iniciarSesion(String email, String password) {
+        // Buscar el usuario en la base de datos por su correo electrónico
+        LoginModel usuario = loginRepository.findByCorreo(email);
+
+        // Si no se encuentra el usuario, la consulta devuelve null
+        if (usuario != null) {
+            // Comparar la contraseña proporcionada con la almacenada
+            return password.equals(usuario.getContrasena());
+        }
+
+        // Si no se encuentra el usuario
         return false;
     }
-    
 }

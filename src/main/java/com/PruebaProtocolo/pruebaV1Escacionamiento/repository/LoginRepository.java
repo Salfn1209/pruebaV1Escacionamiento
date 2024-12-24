@@ -6,4 +6,9 @@ import com.PruebaProtocolo.pruebaV1Escacionamiento.models.LoginModel;
 @Repository
 public interface LoginRepository extends JpaRepository<LoginModel, Long> {
     LoginModel findByCorreo(String correo);
+    boolean existsByCorreo(String correo);  // Método para verificar si el correo ya existe
+
 }
+
+
+//    <link rel="stylesheet" th:href="@{/css/registro.css}">  
