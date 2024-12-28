@@ -13,10 +13,11 @@ body{
     justify-content: center;
     align-items: center;
     background-color: #06c998;/*Poner la imagen*/
-    background-image: url('../img/img4.jpg');
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-image: url('../img/UAM5.jfif');
     background-size: cover;
-
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position: center; /* Centra la imagen */
 }
 .container{
     width: 1080px;

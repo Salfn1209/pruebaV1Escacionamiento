@@ -16,20 +16,20 @@
             <legend>Información de apartado de lugar</legend>
             <form th:action="@{/registrar}" class="sign-up"  method="POST">
                 <label>Marca de tu vehículo</label><br>
-                <input type="text" name="marca_vehiculo" placeholder="Toyota"><br>
+                <input type="text" name="marca_vehiculo" placeholder="Toyota" required><br>
                 <label>Modelo de tu vehículo</label><br>
-                <input type="text" name="modelo_vehiculo" placeholder="Supra"><br>
+                <input type="text" name="modelo_vehiculo" placeholder="Supra" required><br>
                 <label>Año de tu vehículo</label><br>
-                <input type="text" name="anio_vehiculo" placeholder="1998"><br>
+                <input type="text" name="anio_vehiculo" placeholder="1998" required><br>
                 <label>Matricúla de tu vehículo</label><br>
-                <input type="text" name="matricula_vehiculo" placeholder="2203024160"><br>
+                <input type="text" name="matricula_vehiculo" placeholder="2203024160" required><br>
                 <label>Fecha de entrada</label><br>
-                <input name="fecha_entrada" type="datetime-local"><br>
+                <input name="fecha_entrada" type="datetime-local" required><br>
                 <label>Fecha de salida</label><br>
-                <input name="fecha_salida" type="datetime-local"><br>
+                <input name="fecha_salida" type="datetime-local" required><br>
                
                 <label for="opciones">Elige una zona:</label><br>
-                <select id="opciones" name="zona">
+                <select id="opciones" name="zona" required>
                     <option value="P1-E29">P1-E29</option>
                     <option value="P1-E28">P1-E28</option>
                     <option value="P1-E27">P1-E27</option>
@@ -40,7 +40,7 @@
                 </select>
 
                 <label for="opciones">¿Ocupas un espacio reservado?</label><br>
-                <select id="opciones" name="lugar_reservado">
+                <select id="opciones" name="lugar_reservado" required>
                     <option value="No aplica">No Aplica</option>
                     <option value="Discpacitados">Discapacitados</option>
                     <option value="Ambulancia">Ambulancia</option>

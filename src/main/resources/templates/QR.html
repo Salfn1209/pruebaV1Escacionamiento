@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/QR.css}">
+    <!--<link rel="stylesheet" href="../static/css/QR.css">-->
+  
+
     <title>Confirmación de Registro</title>
 </head>
 <body>
-    <h2>Registro Exitoso</h2>
-    <p>Tu registro se ha realizado exitosamente. Aquí está el código QR con la información:</p>
+    <br><br><br><br><br><br>
+    <h1>Registro Exitoso</h1><br>
 
     <!-- Mostrar el código QR generado -->
-    <img th:src="'data:image/png;base64,' + ${qrImage}" alt="Código QR">
+    <img th:src="'data:image/png;base64,' + ${qrImage}" alt="Código QR"><br>
+
+    <br><p>Tu registro se ha realizado exitosamente. Aquí está el código QR con la información:</p><br>
 
     <!-- Botón para descargar el QR como imagen -->
     <a th:href="'data:image/png;base64,' + ${qrImage}" download="registro_qr.png">

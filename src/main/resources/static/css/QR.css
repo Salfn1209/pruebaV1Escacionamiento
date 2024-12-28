@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
+
+body{
+    background-color: #06c998;/*Poner la imagen*/
+    background-image: url('../img/UAM4.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;/*Mantiene el fondo estatico*/  
+    background-position: center; /* Centra la imagen */
+    color: white;
+}
+
+button{
+    width: 170px;
+    height: 45px;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    background-color: #f57b02; /*color del fondo del boton*/
+    color: rgb(255, 255, 255);/*color de letra del boton*/
+}
+
+img{
+    text-align: center;
+}

@@ -77,10 +77,7 @@ public class RegistroController {
             e.printStackTrace();
             return null;
         }
-
-        
     }
-
 
     @GetMapping("/inicioRegistro")
     public String iniciarRegistro() {

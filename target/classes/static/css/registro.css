@@ -1,8 +1,11 @@
 body {
     background-color: red;
-    background-image: url('../img/img4.jpg');
+    background-image: url('../img/UAM3.jfif');
     background-repeat: no-repeat; 
     background-size: cover;
+    background-position: center; /* Centra la imagen */
+
+    background-attachment: fixed;/*Mantiene el fondo estatico*/
 }
 
 legend {
