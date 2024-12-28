@@ -40,38 +40,48 @@ public class LoginControllers {
     public String iniciarSesion(@RequestParam String email, @RequestParam String contrasena) {
         boolean loginExitoso = loginServices.iniciarSesion(email, contrasena);
 
-        if (loginExitoso) { 
+        if (loginExitoso) {
             return "Registro"; // Respuesta exitosa, redirigir o mostrar mensaje adecuado
         } else {
             return "inicioRegistro"; // Redirigir o mostrar mensaje de error
         }
     }
 
-    
 
-     @Autowired
+    @Autowired
     private EmailService emailService;
+
 
     // Controlador para manejar la recuperación de contraseña
     @PostMapping("/recover-password")
-    public ResponseEntity<Void> recoverPassword(@RequestParam String email) {
-        // Aquí puedes agregar la lógica para validar el correo, generar el enlace de recuperación, etc.
-        String resetLink = "https://www.google.com.mx/?hl=es" + email; // Esto es solo un ejemplo
-
+    public ResponseEntity<String> recoverPassword(@RequestParam String email) {
+        // Verificar si el correo existe en la base de datos
+        boolean correoExiste = loginRepository.existsByCorreo(email);
+    
+        if (!correoExiste) {
+            // Si el correo no existe, retornar un error con un mensaje adecuado
+            return ResponseEntity.status(404).body("Correo electrónico no encontrado.");
+        }
+    
+        // Aquí va la lógica de generación del enlace de recuperación y el envío del correo
+        String resetLink = "https://www.example.com/reset?email=" + email;
+    
         // Enviar el correo
         emailService.sendPasswordResetEmail(email, resetLink);
-
-        // Retornar una respuesta al frontend
-        return ResponseEntity.ok().build();
+    
+        // Retornar una respuesta exitosa
+        return ResponseEntity.ok("Correo de recuperación enviado.");
     }
-
+    
+    
     @Autowired
-private LoginRepository loginRepository;  // Asegúrate de tener esta línea en tu controlador
-@GetMapping("/verificarCorreo")
-public ResponseEntity<Boolean> verificarCorreo(@RequestParam String correo) {
-    boolean correoExiste = loginRepository.existsByCorreo(correo);
-    return ResponseEntity.ok(correoExiste);
-}
+    private LoginRepository loginRepository; // Asegúrate de tener esta línea en tu controlador
 
+
+    @GetMapping("/verificarCorreo")
+    public ResponseEntity<Boolean> verificarCorreo(@RequestParam String correo) {
+        boolean correoExiste = loginRepository.existsByCorreo(correo);
+        return ResponseEntity.ok(correoExiste);
+    }
 
 }
