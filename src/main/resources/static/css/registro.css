@@ -16,7 +16,7 @@ legend {
 #container {
     background-color: black;
     color: white;
-    width: 80%; 
+    width: 100%; 
     max-width: 400px; 
     min-height: 500px; 
     margin-left: auto;
@@ -34,7 +34,7 @@ fieldset {
 }
 
 /* Estilo para los inputs */
-input, select, button {
+input, select {
     width: 90%;
     padding: 10px;
     margin: 10px 0;
@@ -43,15 +43,30 @@ input, select, button {
 }
 
 button {
-    background-color: #333;
+    background-color: #ff7300;
+    color: white;
+    cursor: pointer;
+    width: 40%;
+    justify-content: center; /* Centra horizontalmente */
+       padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+button:hover {
+    background-color: #00ff22;
+}
+
+#cancelarBtn {
+    background-color: #ff7300;
     color: white;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #555;
+#cancelarBtn:hover {
+    background-color: #ff0000;
 }
-
 /* Estilo para las etiquetas */
 label {
     font-size: 14px;
@@ -69,4 +84,18 @@ label {
 #svg {
     width: 10%;  /* El SVG ocupará el 100% del ancho del contenedor */
     height: auto; /* La altura se ajustará automáticamente según el aspecto */
+}
+
+/* Estilo para el botón de "Cancelar" (rojo) */
+.btn-cancelar {
+    background-color: #ff0000 !important;  /* Rojo */
+    color: white !important;               /* Texto blanco */
+    border: none !important;               /* Sin borde */
+}
+
+/* Estilo para el botón de "Continuar" (verde) */
+.btn-continuar {
+    background-color: #28a745 !important;  /* Verde */
+    color: white !important;               /* Texto blanco */
+    border: none !important;               /* Sin borde */
 }
