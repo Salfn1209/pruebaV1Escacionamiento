@@ -12,6 +12,7 @@ public class LoginServices {
     @Autowired
     private LoginRepository loginRepository;
 
+
     public void guardarUsuario(LoginModel model) {
         try {
             // Intentamos guardar el usuario
@@ -23,6 +24,7 @@ public class LoginServices {
             // Puedes lanzar una excepción personalizada o manejar el error de otra manera
         }
     }
+
 
     public boolean iniciarSesion(String email, String password) {
         // Buscar el usuario en la base de datos por su correo electrónico
@@ -37,4 +39,5 @@ public class LoginServices {
         // Si no se encuentra el usuario
         return false;
     }
+
 }
